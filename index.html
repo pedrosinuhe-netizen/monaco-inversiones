@@ -1,1 +1,112 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Monaco Inversiones | Tasas Actualizadas</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background:#0b1d33;
+  color:#fff;
+  margin:0;
+}
+header {
+  background:#081427;
+  padding:20px;
+  text-align:center;
+}
+section {
+  padding:20px;
+}
+table {
+  width:100%;
+  border-collapse: collapse;
+  margin-top:10px;
+}
+th, td {
+  border:1px solid #2a3b5c;
+  padding:10px;
+  text-align:center;
+}
+th {
+  background:#12284a;
+}
+.card {
+  background:#12284a;
+  padding:15px;
+  border-radius:8px;
+  margin-bottom:20px;
+}
+input, button {
+  padding:10px;
+  border:none;
+  border-radius:5px;
+}
+button {
+  background:#f4c430;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📊 Monaco Inversiones</h1>
+  <p>Comparador de rendimientos en México</p>
+</header>
+
+<section class="card">
+  <h2>🇲🇽 CETES</h2>
+  <table>
+    <tr>
+      <th>Plazo</th>
+      <th>Tasa anual</th>
+    </tr>
+    <tr><td>28 días</td><td>6.90%</td></tr>
+    <tr><td>91 días</td><td>7.00%</td></tr>
+    <tr><td>182 días</td><td>7.10%</td></tr>
+    <tr><td>1 año</td><td>7.35%</td></tr>
+  </table>
+</section>
+
+<section class="card">
+  <h2>🏦 SOFIPOS</h2>
+  <table>
+    <tr>
+      <th>Institución</th>
+      <th>Tasa anual</th>
+    </tr>
+    <tr><td>Klar</td><td>15.0%</td></tr>
+    <tr><td>DiDi</td><td>15.0%</td></tr>
+    <tr><td>Mercado Pago</td><td>13.0%</td></tr>
+    <tr><td>Stori</td><td>7.5%</td></tr>
+  </table>
+</section>
+
+<section class="card">
+  <h2>🧮 Calculadora de Rendimiento</h2>
+  <p>Monto a invertir:</p>
+  <input type="number" id="monto" placeholder="$10,000">
+  <p>Tasa anual (%):</p>
+  <input type="number" id="tasa" placeholder="7">
+  <br><br>
+  <button onclick="calcular()">Calcular</button>
+  <h3 id="resultado"></h3>
+</section>
+
+<script>
+function calcular() {
+  let monto = document.getElementById("monto").value;
+  let tasa = document.getElementById("tasa").value;
+  let interes = monto * (tasa / 100);
+  let total = parseFloat(monto) + interes;
+  document.getElementById("resultado").innerText =
+    "Interés estimado anual: $" + interes.toFixed(2) +
+    " | Total: $" + total.toFixed(2);
+}
+</script>
+
+</body>
+</html>

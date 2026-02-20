@@ -145,7 +145,22 @@ footer {
   </div>
 
 </div>
+<div class="card calc" style="margin-top:20px;">
+  <h2>Comparación CETES vs SOFIPOS</h2>
 
+  <input type="number" id="montoComp" placeholder="Monto a invertir ($)">
+
+  <select id="periodo" style="width:100%; padding:10px; border-radius:6px; margin-bottom:10px;">
+    <option value="">Selecciona periodo</option>
+    <option value="28">28 días</option>
+    <option value="91">91 días</option>
+    <option value="182">182 días</option>
+    <option value="365">1 año</option>
+  </select>
+
+  <button onclick="comparar()">Comparar</button>
+  <p id="resultadoComp"></p>
+</div>
 <footer>
   Demo informativa. No constituye asesoría financiera.
 </footer>
@@ -167,6 +182,35 @@ function calcular() {
     `Interés estimado: $${interes.toFixed(2)} | Total: $${total.toFixed(2)}`;
 }
 </script>
+<script>
+function comparar() {
+  const monto = parseFloat(document.getElementById("montoComp").value);
+  const dias = parseInt(document.getElementById("periodo").value);
 
+  if (!monto || !dias) {
+    document.getElementById("resultadoComp").innerText =
+      "Ingresa un monto y selecciona un periodo.";
+    return;
+  }
+
+  // Tasas anuales de referencia
+  const tasaCetes = 0.07;   // 7%
+  const tasaSofipo = 0.12;  // 12%
+
+  const factorTiempo = dias / 365;
+
+  const interesCetes = monto * tasaCetes * factorTiempo;
+  const interesSofipo = monto * tasaSofipo * factorTiempo;
+
+  const totalCetes = monto + interesCetes;
+  const totalSofipo = monto + interesSofipo;
+
+  document.getElementById("resultadoComp").innerHTML = `
+    <strong>Resultado para ${dias} días</strong><br><br>
+    CETES: Ganas $${interesCetes.toFixed(2)} → Total $${totalCetes.toFixed(2)}<br>
+    SOFIPO: Ganas $${interesSofipo.toFixed(2)} → Total $${totalSofipo.toFixed(2)}
+  `;
+}
+</script>
 </body>
 </html>

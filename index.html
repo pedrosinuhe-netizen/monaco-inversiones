@@ -2,215 +2,276 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Monaco Inversiones | Demo</title>
+<title>Monaco Inversiones | Comparador de Tasas</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
+/* 📌 RESETEAR ESTILOS */
+* {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #0e1626;
-  color: #eaeaea;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* 🟦 PALETA DE COLORES */
+:root {
+  --bg: #ffffff;
+  --primary: #164dcd;
+  --secondary: #14294a;
+  --accent: #f4c430;
+  --text: #333333;
+  --text-light: #555555;
+  --card-bg: #f8f9fa;
+}
+
+/* 📄 ESTILOS BASE */
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* 🌐 HEADER */
 header {
-  background: linear-gradient(135deg, #0b1d33, #14294a);
-  padding: 30px 20px;
+  background: var(--primary);
+  color: white;
+  padding: 25px 20px;
   text-align: center;
 }
-
 header h1 {
-  margin: 0;
   font-size: 2rem;
 }
-
 header p {
-  color: #b0c4de;
   margin-top: 8px;
+  font-size: 1.1rem;
 }
 
+/* 🗂️ CONTENEDOR GENERAL */
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
   padding: 20px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background: #14294a;
-  border-radius: 12px;
+/* 🃏 TARJETAS SECCIÓN */
+.section-card {
+  background: var(--card-bg);
+  border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  margin-bottom: 25px;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.07);
 }
 
-.card h2 {
-  margin-top: 0;
-  color: #f4c430;
+/* 🎯 TITULOS SECCIONES */
+.section-card h2 {
+  margin-bottom: 12px;
+  color: var(--primary);
 }
 
+/* 🧮 TABLAS */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
 }
-
 th, td {
+  border: 1px solid #ccc;
   padding: 10px;
   text-align: center;
 }
-
 th {
-  background: #1f3b6d;
+  background: var(--secondary);
+  color: white;
 }
 
-tr:nth-child(even) {
-  background: rgba(255,255,255,0.05);
-}
-
-.calc input {
+/* 🧠 INPUTS Y SELECTS */
+input, select {
   width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
+  border: 1px solid #bbb;
   border-radius: 6px;
-  border: none;
+  margin-bottom: 10px;
+  font-size: 1rem;
 }
 
-.calc button {
-  width: 100%;
-  padding: 12px;
-  background: #f4c430;
+/* 🟨 BOTONES */
+button {
+  background: var(--accent);
+  color: var(--text);
   border: none;
+  padding: 12px;
   border-radius: 6px;
-  font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
 }
-
-.calc button:hover {
-  background: #ffd95a;
+button:hover {
+  background: #ffdd57;
 }
 
-footer {
+/* 🛎️ CTA DESTACADO */
+.cta {
   text-align: center;
-  padding: 20px;
-  color: #888;
-  font-size: 0.9rem;
+  margin-top: 40px;
+}
+.cta button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+}
+
+/* 📌 RESULTADOS */
+#resultadoComp, #seguridad {
+  margin-top: 15px;
+  font-weight: bold;
 }
 </style>
 </head>
-
 <body>
 
+<!-- ================= HEADER ================= -->
 <header>
   <h1>Monaco Inversiones</h1>
-  <p>Comparador de rendimientos en México</p>
+  <p>Compara y aprende a invertir en México</p>
 </header>
 
 <div class="container">
 
-  <div class="grid">
-    <div class="card">
-      <h2>CETES</h2>
-      <table>
-        <tr><th>Plazo</th><th>Tasa anual</th></tr>
+  <!-- ============ CETES ============ -->
+  <div class="section-card">
+    <h2>Tasas de CETES (Referencia)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Plazo</th>
+          <th>Tasa anual</th>
+        </tr>
+      </thead>
+      <tbody>
         <tr><td>28 días</td><td>6.90%</td></tr>
         <tr><td>91 días</td><td>7.00%</td></tr>
         <tr><td>182 días</td><td>7.10%</td></tr>
         <tr><td>1 año</td><td>7.35%</td></tr>
-      </table>
-    </div>
-
-    <div class="card">
-      <h2>SOFIPOS</h2>
-      <table>
-        <tr><th>Institución</th><th>Tasa anual</th></tr>
-        <tr><td>Klar</td><td>15.0%</td></tr>
-        <tr><td>DiDi</td><td>15.0%</td></tr>
-        <tr><td>Mercado Pago</td><td>13.0%</td></tr>
-        <tr><td>Stori</td><td>7.5%</td></tr>
-      </table>
-    </div>
+      </tbody>
+    </table>
   </div>
 
-  <div class="card calc" style="margin-top:20px;">
-    <h2>Calculadora de rendimiento anual</h2>
-    <input type="number" id="monto" placeholder="Monto a invertir ($)">
-    <input type="number" id="tasa" placeholder="Tasa anual (%)">
-    <button onclick="calcular()">Calcular</button>
-    <p id="resultado"></p>
+  <!-- ============ SOFIPOS ============ -->
+  <div class="section-card">
+    <h2>SOFIPOS (Referencia)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Institución</th>
+          <th>Tasa anual</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Klar</td><td>13.0%</td></tr>
+        <tr><td>Nu</td><td>14.0%</td></tr>
+        <tr><td>Finsus</td><td>15.0%</td></tr>
+        <tr><td>SuperTasas</td><td>16.0%</td></tr>
+        <tr><td>Kubo Financiero</td><td>14.0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ====== CALCULADORA ====== -->
+  <div class="section-card">
+    <h2>Calculadora de Rendimiento</h2>
+    <input type="number" id="montoCalc" placeholder="Monto a invertir ($)">
+    <input type="number" id="tasaCalc" placeholder="Tasa anual (%)">
+    <button onclick="calcularRendimiento()">Calcular</button>
+    <p id="resultadoCalc"></p>
+  </div>
+
+  <!-- ====== COMPARADOR ====== -->
+  <div class="section-card">
+    <h2>Comparación CETES vs SOFIPOS</h2>
+
+    <input type="number" id="montoComp" placeholder="Monto a invertir ($)">
+    <select id="periodoComp">
+      <option value="">Selecciona periodo</option>
+      <option value="28">28 días</option>
+      <option value="91">91 días</option>
+      <option value="182">182 días</option>
+      <option value="365">1 año</option>
+    </select>
+
+    <select id="sofipoComp">
+      <option value="">Selecciona SOFIPO</option>
+      <option value="klar">Klar</option>
+      <option value="nu">Nu</option>
+      <option value="finsus">Finsus</option>
+      <option value="supertasas">SuperTasas</option>
+      <option value="kubofinanciero">Kubo Financiero</option>
+    </select>
+
+    <button onclick="compararMontos()">Comparar</button>
+
+    <p id="resultadoComp"></p>
+    <div id="seguridadInfo"></div>
+  </div>
+
+  <!-- ====== CTA VENTAS ====== -->
+  <div class="cta">
+    <button onclick="alert('Próximamente más información del curso 📘')">📘 Quiero aprender a invertir</button>
   </div>
 
 </div>
-<div class="card calc" style="margin-top:20px;">
-  <h2>Comparación CETES vs SOFIPOS</h2>
-
-  <input type="number" id="montoComp" placeholder="Monto a invertir ($)">
-
-  <select id="periodo" style="width:100%; padding:10px; border-radius:6px; margin-bottom:10px;">
-    <option value="">Selecciona periodo</option>
-    <option value="28">28 días</option>
-    <option value="91">91 días</option>
-    <option value="182">182 días</option>
-    <option value="365">1 año</option>
-  </select>
-
-  <button onclick="comparar()">Comparar</button>
-  <p id="resultadoComp"></p>
-</div>
-<footer>
-  Demo informativa. No constituye asesoría financiera.
-</footer>
 
 <script>
-function calcular() {
-  const monto = parseFloat(document.getElementById("monto").value);
-  const tasa = parseFloat(document.getElementById("tasa").value);
-
+function calcularRendimiento() {
+  var monto = parseFloat(document.getElementById("montoCalc").value);
+  var tasa = parseFloat(document.getElementById("tasaCalc").value);
   if (!monto || !tasa) {
-    document.getElementById("resultado").innerText = "Ingresa monto y tasa válidos.";
+    document.getElementById("resultadoCalc").innerText = "Ingresa valores válidos.";
     return;
   }
-
-  const interes = monto * (tasa / 100);
-  const total = monto + interes;
-
-  document.getElementById("resultado").innerText =
-    `Interés estimado: $${interes.toFixed(2)} | Total: $${total.toFixed(2)}`;
+  var interes = monto * (tasa/100);
+  var total = monto + interes;
+  document.getElementById("resultadoCalc").innerText =
+    "Interés: $" + interes.toFixed(2) + " | Total: $" + total.toFixed(2);
 }
-</script>
-<script>
-function comparar() {
-  const monto = parseFloat(document.getElementById("montoComp").value);
-  const dias = parseInt(document.getElementById("periodo").value);
 
-  if (!monto || !dias) {
+/* Comparador */
+function compararMontos() {
+  const monto = parseFloat(document.getElementById("montoComp").value);
+  const dias = parseInt(document.getElementById("periodoComp").value);
+  const sofipo = document.getElementById("sofipoComp").value;
+
+  if (!monto || !dias || !sofipo) {
     document.getElementById("resultadoComp").innerText =
-      "Ingresa un monto y selecciona un periodo.";
+      "Completa monto, periodo y SOFIPO.";
     return;
   }
 
-  // Tasas anuales de referencia
-  const tasaCetes = 0.07;   // 7%
-  const tasaSofipo = 0.12;  // 12%
+  const tasas = {
+    klar: 0.13,
+    nu: 0.14,
+    finsus: 0.15,
+    supertasas: 0.16,
+    kubofinanciero: 0.14
+  };
+  const factor = dias / 365;
 
-  const factorTiempo = dias / 365;
-
-  const interesCetes = monto * tasaCetes * factorTiempo;
-  const interesSofipo = monto * tasaSofipo * factorTiempo;
-
-  const totalCetes = monto + interesCetes;
-  const totalSofipo = monto + interesSofipo;
+  const interestCetes = monto * 0.07 * factor;
+  const interestSofipo = monto * tasas[sofipo] * factor;
 
   document.getElementById("resultadoComp").innerHTML = `
-    <strong>Resultado para ${dias} días</strong><br><br>
-    CETES: Ganas $${interesCetes.toFixed(2)} → Total $${totalCetes.toFixed(2)}<br>
-    SOFIPO: Ganas $${interesSofipo.toFixed(2)} → Total $${totalSofipo.toFixed(2)}
+    <strong>Resultado (${dias} días)</strong><br>
+    CETES: $${interestCetes.toFixed(2)}<br>
+    SOFIPO: $${interestSofipo.toFixed(2)}
+  `;
+
+  const rating = (tasas[sofipo] > 0.14) ? "Alta" : "Media";
+  document.getElementById("seguridadInfo").innerHTML = `
+    <h3>Seguridad</h3>
+    Nivel de confianza: <strong>${rating}</strong><br>
+    Protección: Hasta <strong>25,000 UDIS</strong>
   `;
 }
 </script>
+
 </body>
 </html>

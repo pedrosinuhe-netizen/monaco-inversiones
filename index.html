@@ -126,6 +126,44 @@ button:hover {
   font-weight: bold;
 }
 </style>
+  /* ✨ ANIMACIONES */
+.section-card {
+  animation: fadeUp 0.6s ease forwards;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.section-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🎯 ICONOS EN TITULOS */
+.section-card h2 i {
+  margin-right: 8px;
+  color: var(--primary);
+}
+
+/* 🟨 BOTÓN CON ANIMACIÓN */
+button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -139,7 +177,7 @@ button:hover {
 
   <!-- ============ CETES ============ -->
   <div class="section-card">
-    <h2>Tasas de CETES (Referencia)</h2>
+    <h2><i class="fa-solid fa-chart-line"></i> Tasas de CETES (Referencia)</h2>
     <table>
       <thead>
         <tr>
@@ -158,7 +196,7 @@ button:hover {
 
   <!-- ============ SOFIPOS ============ -->
   <div class="section-card">
-    <h2>SOFIPOS (Referencia)</h2>
+    <h2><i class="fa-solid fa-building-columns"></i> SOFIPOS (Referencia)</h2>
     <table>
       <thead>
         <tr>
@@ -178,7 +216,7 @@ button:hover {
 
   <!-- ====== CALCULADORA ====== -->
   <div class="section-card">
-    <h2>Calculadora de Rendimiento</h2>
+    <h2><i class="fa-solid fa-calculator"></i> Calculadora de Rendimiento</h2>
     <input type="number" id="montoCalc" placeholder="Monto a invertir ($)">
     <input type="number" id="tasaCalc" placeholder="Tasa anual (%)">
     <button onclick="calcularRendimiento()">Calcular</button>
@@ -187,7 +225,7 @@ button:hover {
 
   <!-- ====== COMPARADOR ====== -->
   <div class="section-card">
-    <h2>Comparación CETES vs SOFIPOS</h2>
+    <h2><i class="fa-solid fa-scale-balanced"></i> Comparación CETES vs SOFIPOS</h2>
 
     <input type="number" id="montoComp" placeholder="Monto a invertir ($)">
     <select id="periodoComp">
@@ -212,7 +250,54 @@ button:hover {
     <p id="resultadoComp"></p>
     <div id="seguridadInfo"></div>
   </div>
+<div class="section-card">
+  <h2><i class="fa-solid fa-shield-halved"></i> Seguridad y Confiabilidad</h2>
 
+  <p>
+    Todas las SOFIPOS mostradas están reguladas por la
+    <strong>:contentReference[oaicite:0]{index=0}</strong>
+    y protegidas por
+    <strong>:contentReference[oaicite:1]{index=1}</strong>
+    hasta <strong>25,000 UDIS</strong>.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>SOFIPO</th>
+        <th>Nivel de Riesgo</th>
+        <th>Confiabilidad</th>
+        <th>Protección</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Nu</td>
+        <td>Bajo</td>
+        <td>Alta</td>
+        <td>✔ PROSOFIPO</td>
+      </tr>
+      <tr>
+        <td>Klar</td>
+        <td>Bajo</td>
+        <td>Alta</td>
+        <td>✔ PROSOFIPO</td>
+      </tr>
+      <tr>
+        <td>SuperTasas</td>
+        <td>Medio</td>
+        <td>Alta</td>
+        <td>✔ PROSOFIPO</td>
+      </tr>
+      <tr>
+        <td>Finsus</td>
+        <td>Medio</td>
+        <td>Alta</td>
+        <td>✔ PROSOFIPO</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
   <!-- ====== CTA VENTAS ====== -->
   <div class="cta">
     <button onclick="alert('Próximamente más información del curso 📘')">📘 Quiero aprender a invertir</button>
